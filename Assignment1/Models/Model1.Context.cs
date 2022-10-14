@@ -26,5 +26,6 @@ namespace Assignment1.Models
         }
     
         public virtual DbSet<FoodCalorie> FoodCalories { get; set; }
+        public virtual DbSet<NutritionAdvice> NutritionAdvices { get; set; }
     }
 }

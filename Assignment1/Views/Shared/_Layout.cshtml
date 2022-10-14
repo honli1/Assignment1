@@ -27,6 +27,7 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Food Calorie", "Index", "FoodCalories")</li>
+                        <li>@Html.ActionLink("Nutrition advices", "Index", "NutritionAdvices")</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

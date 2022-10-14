@@ -7,6 +7,7 @@
     <Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="Model1StoreContainer">
     <EntitySet Name="FoodCalories" EntityType="Model1.Store.FoodCalories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NutritionAdvices" EntityType="Model1.Store.NutritionAdvices" store:Type="Tables" Schema="dbo" />
   </EntityContainer>
   <EntityType Name="FoodCalories">
     <Key>
@@ -15,7 +16,17 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="FoodCatergory" Type="nvarchar(max)" Nullable="false" />
     <Property Name="CalorieAmount" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NutritionLevel" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FoodName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NutritionAdvices">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdviceTitle" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AdviceContent" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AdviceImage" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -23,6 +34,7 @@
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="FoodCalories" EntityType="Model1.FoodCalorie" />
+          <EntitySet Name="NutritionAdvices" EntityType="Model1.NutritionAdvice" />
         </EntityContainer>
         <EntityType Name="FoodCalorie">
           <Key>
@@ -31,7 +43,17 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FoodCatergory" Type="String" Nullable="false" />
           <Property Name="CalorieAmount" Type="String" Nullable="false" />
-          <Property Name="UserId" Type="String" Nullable="false" />
+          <Property Name="NutritionLevel" Type="String" Nullable="false" />
+          <Property Name="FoodName" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NutritionAdvice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdviceTitle" Type="String" Nullable="false" />
+          <Property Name="AdviceContent" Type="String" Nullable="false" />
+          <Property Name="AdviceImage" Type="String" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -45,7 +67,18 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="FoodCatergory" ColumnName="FoodCatergory" />
           <ScalarProperty Name="CalorieAmount" ColumnName="CalorieAmount" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="NutritionLevel" ColumnName="NutritionLevel" />
+          <ScalarProperty Name="FoodName" ColumnName="FoodName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NutritionAdvices">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.NutritionAdvice)">
+        <MappingFragment StoreEntitySet="NutritionAdvices">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AdviceTitle" ColumnName="AdviceTitle" />
+          <ScalarProperty Name="AdviceContent" ColumnName="AdviceContent" />
+          <ScalarProperty Name="AdviceImage" ColumnName="AdviceImage" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

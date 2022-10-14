@@ -7,7 +7,6 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Assignment1.Models;
-using Microsoft.AspNet.Identity;
 
 namespace Assignment1.Controllers
 {
@@ -47,12 +46,8 @@ namespace Assignment1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
-        public ActionResult Create([Bind(Include = "Id,FoodCatergory,CalorieAmount")] FoodCalorie foodCalorie)
+        public ActionResult Create([Bind(Include = "Id,FoodCatergory,CalorieAmount,NutritionLevel,FoodName")] FoodCalorie foodCalorie)
         {
-            foodCalorie.UserId = User.Identity.GetUserId();
-            ModelState.Clear();
-            TryValidateModel(foodCalorie);
             if (ModelState.IsValid)
             {
                 db.FoodCalories.Add(foodCalorie);
@@ -83,7 +78,7 @@ namespace Assignment1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FoodCatergory,CalorieAmount,UserId")] FoodCalorie foodCalorie)
+        public ActionResult Edit([Bind(Include = "Id,FoodCatergory,CalorieAmount,NutritionLevel,FoodName")] FoodCalorie foodCalorie)
         {
             if (ModelState.IsValid)
             {

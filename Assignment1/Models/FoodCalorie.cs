@@ -17,6 +17,7 @@ namespace Assignment1.Models
         public int Id { get; set; }
         public string FoodCatergory { get; set; }
         public string CalorieAmount { get; set; }
-        public string UserId { get; set; }
+        public string NutritionLevel { get; set; }
+        public string FoodName { get; set; }
     }
 }
